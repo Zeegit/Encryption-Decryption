@@ -6,25 +6,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         //
-        String direct  = "abcdefghijklmnopqrstuvwxyz";
+        //String direct  = "abcdefghijklmnopqrstuvwxyz";
         //String reverse = "zyxwvutsrqponmlkjihgfedcba";
 
-        String textDirect = scanner.nextLine();
+        String operation = scanner.nextLine();
+        String textInput = scanner.nextLine();
         int offset = Integer.parseInt(scanner.nextLine());
 
-        String textEncryption = "";
-        int pos;
-        for(int i = 0; i < textDirect.length(); i++) {
-            pos = direct.indexOf(textDirect.charAt(i));
-            if (pos > -1) {
-                int x = (pos+offset) % direct.length();
-                textEncryption += direct.charAt(x);
-            } else {
-                textEncryption += textDirect.charAt(i);
-            }
+        String textOutput = "";
+        char c;
+
+        for(int i = 0; i < textInput.length(); i++) {
+            c = textInput.charAt(i);
+            c += "enc".equals(operation)?offset:-offset;
+            textOutput += c;
         }
 
-        System.out.println(textEncryption);
+        System.out.println(textOutput);
 
     }
 }
